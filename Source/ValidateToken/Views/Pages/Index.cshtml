@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+    $(document).ready(function() {
+        $("#validateButton").click(function() {
+
+            $.ajax({
+                url: "/Pages/AuthorizedCall",
+                // Note: Add 'SessionKey' here
+                headers: {
+                    "SessionKey": "asdfasdfdsaf"
+                },
+                //xhrFields: {
+                //    withCredentials: true
+                //},
+                success: function(result) {
+                    $("#result").html(result);
+                },
+                error: function(err) {
+                    alert('CODE: ' + err.status + ': ' );
+                }
+            });
+
+        });
+    });
+</script>
+
+    <h2>@ViewBag.Title</h2>
+
+    <input id="validateButton" type="submit" value="Let's go!" />
+
+    <div id="result"></div>
+
+    <hr />
